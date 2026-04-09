@@ -1,0 +1,278 @@
+/* Плавний скролл */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Загальні стилі */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7f9;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(90deg, #004aad, #00aaff);
+  color: white;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+section {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 1s ease-in;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #004aad;
+  font-weight: 700;
+}
+
+/* Анімація */
+@keyframes fadeIn {
+  0% {opacity: 0; transform: translateY(20px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+/* Новини */
+.news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.news-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.news-card img:hover {
+  transform: scale(1.05);
+}
+
+.news-card .content {
+  padding: 1rem;
+}
+
+.news-card h3 {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+/* Плани */
+.plans ul {
+  list-style: none;
+  padding: 0;
+}
+
+.plans li {
+  background: white;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plans li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* Команда */
+.team-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+  transition: transform 0.3s;
+}
+
+.slide img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  transition: transform 0.3s;
+}
+
+.slide img:hover {
+  transform: scale(1.05);
+}
+
+.slider-buttons {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.slider-buttons button {
+  background: #004aad;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin: 0 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.slider-buttons button:hover {
+  background: #003080;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(90deg, #004aad, #00aaff);
+  color: white;
+  margin-top: 2rem;
+  font-weight: 500;
+}
+
+.extra-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, margin-top 0.4s ease;
+  margin-top: 0;
+  color: #444;
+  font-size: 0.95em;
+}
+
+.news-card.open .extra-text {
+  max-height: 500px; /* достатньо для тексту */
+  margin-top: 10px;
+}
+
+.plans ul {
+  list-style: none;
+  padding: 0;
+}
+
+.plans li {
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.plans .arrow {
+  float: right;
+  transition: transform 0.3s;
+}
+
+.plans li.open .arrow {
+  transform: rotate(90deg);
+}
+
+.plans .extra-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, margin-top 0.4s ease;
+  margin-top: 0;
+  font-size: 0.95em;
+  color: #444;
+}
+
+.plans li.open .extra-text {
+  max-height: 200px; /* достатньо для тексту */
+  margin-top: 5px;
+}
+
+/* --- Адаптивність хедера --- */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 0.8rem; /* зменшений відступ */
+  }
+
+  nav a {
+    font-size: 0.9rem; /* трохи менший текст */
+    padding: 0.4rem 0.6rem; /* компактніші кнопки */
+  }
+}
+
+@media (max-width: 500px) {
+  nav {
+    flex-wrap: wrap; /* дозволяє перенос кнопок */
+    justify-content: center;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+
